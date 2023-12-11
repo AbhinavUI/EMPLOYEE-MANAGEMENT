@@ -1,0 +1,90 @@
+<!-- <p>all-employees works!</p> -->
+
+
+
+<div class="top">
+
+    <div class="search">
+        <!--  For Search bar  -->
+        <input type="text" placeholder="search here...." (keypress)="getFilteredEmployees()" [(ngModel)]="term">
+        <br><br>
+    </div>
+    
+    <div class="options">
+        <!-- Sorting -->
+        <label for="">Column:</label>
+        <select [(ngModel)]="column">
+            <option>name</option>
+            <option>fee</option>
+        </select>&nbsp;&nbsp;
+        <label for="">Order:</label>
+        <select [(ngModel)]="order">
+            <option>asc</option>
+            <option>desc</option>
+        </select>&nbsp;&nbsp;
+        <button (click)="sort()">sort</button>
+        <br><br>
+
+        <!-- Pagination -->
+        <select [(ngModel)]="pageno">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>&nbsp;&nbsp;
+        <button (click)="pagination()">page</button>
+    </div>
+    
+</div>
+
+
+
+<table class="table table-striped">
+    <thead class="table table-dark">
+        <tr>
+            <th>S.no</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Package</th>
+            <th>Email id</th>
+            <th>DOB</th>
+            <th>Address</th>
+            <th>Hikes</th>
+            <th>WorkMode</th>
+            <th>Travel Fee</th>
+            <th>Wifi Bill</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees, let i = index">
+            <td>{{i+1}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.company}}</td>
+            <td>{{employee.role}}</td>
+            <td [ngStyle]="{'background-color': employee.package>=9 ? '#5dbf5d' : '#e65858' }">{{employee.package}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.dob|date:'yyyy-MM-dd'}}</td>
+            <td>{{employee.address?.addressLine}},<br>{{employee.address?.city}},<br>{{employee.address?.state}},<br>{{employee.address?.pincode}}</td>
+            <td>
+                <tr class="hikes" *ngFor="let value of employee.hikes">
+                    <td>Year: {{value.year}}, {{value.percentage}} %hike</td>
+                    <td></td>
+                </tr>
+            </td>
+            <td>{{employee.workMode}}</td>
+            <td>{{employee.travelFee}}</td>
+            <td>{{employee.wifiBill}}</td>
+            <td>
+                <button class="logout" (click)="delete(employee.id)">delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

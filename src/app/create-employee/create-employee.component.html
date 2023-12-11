@@ -1,0 +1,113 @@
+<!-- <p>create-employee works!</p> -->
+
+<div class="title">
+    <h1>Create Employee Form</h1>
+    <br>
+</div>
+    
+<div class="employeeForm">
+    <form [formGroup]="employeeForm">
+        <label>Name:</label>
+        <input type="text" formControlName="name">
+        <div *ngIf="employeeForm.get('name')?.touched || employeeForm.get('name')?.dirty">
+            <p *ngIf="employeeForm.get('name')?.errors?.['required']">*name is required</p>
+            <p *ngIf="employeeForm.get('name')?.errors?.['minlength']">*min 3 chars required></p>
+            <p *ngIf="employeeForm.get('name')?.errors?.['maxlength']">*Max 20 chars</p>
+        </div>
+        <br><br>
+        <label>Company name:</label>
+        <input type="text" formControlName="company">
+        <div *ngIf="employeeForm.get('company')?.touched || employeeForm.get('company')?.dirty">
+            <p *ngIf="employeeForm.get('company')?.errors?.['required']">*company is required</p>
+            <p *ngIf="employeeForm.get('company')?.errors?.['minlength']">*min 3 chars required></p>
+            <p *ngIf="employeeForm.get('company')?.errors?.['maxlength']">*Max 20 chars</p>
+        </div>
+        <br><br>
+        <label>Employee Role:</label>
+        <input type="text" formControlName="role">
+        <div *ngIf="employeeForm.get('role')?.touched || employeeForm.get('role')?.dirty">
+            <p *ngIf="employeeForm.get('role')?.errors?.['required']">*role is required</p>
+            <p *ngIf="employeeForm.get('role')?.errors?.['minlength']">*min 3 chars required></p>
+            <p *ngIf="employeeForm.get('role')?.errors?.['maxlength']">*Max 20 chars</p>
+        </div>
+        <br><br>
+        <label>Package:</label>
+        <input type="number" formControlName="package">
+        <div *ngIf="employeeForm.get('package')?.touched || employeeForm.get('package')?.dirty">
+            <p *ngIf="employeeForm.get('package')?.errors?.['required']">*package is required</p>
+            <p *ngIf="employeeForm.get('package')?.errors?.['min']">*Min 1 digits required</p>
+            <p *ngIf="employeeForm.get('package')?.errors?.['max']">*Max 100 digits</p>
+        </div>
+        <br><br>
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="employeeForm.get('email')?.touched || employeeForm.get('email')?.dirty">
+            <p *ngIf="employeeForm.get('email')?.errors?.['required']">*email is required</p>
+            <p *ngIf="employeeForm.get('email')?.errors?.['email']">*Invalid email format</p>
+        </div>
+        <br><br>
+        <label>Date of birth:</label>
+        <input type="month" formControlName="dob">
+        <br><br>
+
+        <div formGroupName="address">
+            <label>Address Line:</label>
+            <input type="text" formControlName="addressLine">
+            <br><br>
+            <label>City:</label>
+            <input type="text" formControlName="city">
+            <br><br>
+            <label>State:</label>
+            <input type="text" formControlName="state">
+            <br><br>
+            <label>Pincode:</label>
+            <input type="number" formControlName="pincode">
+            <br><br>
+        </div>
+
+        <button (click)="add()">Add</button>
+        <br>
+
+        <div formArrayName="hikes">
+            <div *ngFor="let hike of hikesFormArray.controls; let i = index">
+                <div formGroupName= "{{i}}">
+                    <label for="">Year:</label>
+                    <input type="number" formControlName="year">
+                    <br><br>
+                    <label for="">Percentage:</label>
+                    <input type="number" formControlName="percentage">
+                    <br><br>
+
+                    <button (click)="delete(i)">delete</button>
+                    <br><br>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="workmode">
+            <label>Work Mode:</label>
+            <input type="radio" name="type" formControlName="workMode" value="workFromOffice">
+            <label>Work from office:</label>
+            <input type="radio" name="type" formControlName="workMode" value="remote">
+            <label>Remote:</label>
+            <br><br>
+        </div>
+        
+
+        <div *ngIf="employeeForm.get('workMode')?.value=='workFromOffice'">
+            <label for="">Travel Fee:</label>
+            <input type="number" formControlName="travelFee">
+            <br><br>
+        </div>
+
+        <div *ngIf="employeeForm.get('workMode')?.value=='remote'">
+            <label for="">Wifi Bill:</label>
+            <input type="number" formControlName="WifiBill">
+            <br><br>
+        </div>
+
+        <button (click)="submit()">submit</button>
+    </form>
+</div>

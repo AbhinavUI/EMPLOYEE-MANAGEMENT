@@ -1,0 +1,28 @@
+<!-- <p>dashboard works!</p> -->
+
+<div class="parent">
+    <div class="left">
+        <marquee behavior="scroll" direction="left"><h1>Dashboard</h1></marquee>
+        <br>
+        <hr>
+        <br>
+        <h3 routerLink="home">Home</h3>
+        <br>
+        <h3 routerLink="create-employee">Create Employee</h3>
+        <br>
+        <h3 routerLink="all-employee">All Employees List</h3>
+        
+        <br>
+
+        <!-- This is ued to navigate back to login page using routerLink method -->
+        <!-- <button routerLink="/login" class="logout">logout</button> -->
+
+        <!-- This is by using a function call in dashboard.ts -->
+        <button (click)="logout()" class="logout">logout</button>
+
+
+    </div>
+    <div class="right">
+        <router-outlet></router-outlet>
+    </div>
+</div>
