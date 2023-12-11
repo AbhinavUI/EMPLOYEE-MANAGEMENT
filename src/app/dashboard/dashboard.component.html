@@ -2,17 +2,12 @@
 
 <div class="parent">
     <div class="left">
-        <marquee behavior="scroll" direction="left"><h1>Dashboard</h1></marquee>
-        <br>
+        <marquee behavior="scroll" direction="left"><h3>Dashboard</h3></marquee>
         <hr>
-        <br>
-        <h3  class="option" [class.selected]="selectedOption === 'Option 1'" (click)="selectOption('Option 1')" routerLink="home">Home</h3>
-        <br>
-        <h3 class="option" [class.selected]="selectedOption === 'Option 2'" (click)="selectOption('Option 2')" routerLink="create-employee">Create Employee</h3>
-        <br>
-        <h3 class="option" [class.selected]="selectedOption === 'Option 3'" (click)="selectOption('Option 3')" routerLink="all-employee">All Employees List</h3>
-        
-        <br>
+        <h5  class="option" [class.selected]="selectedOption === 'Option 1'" (click)="selectOption('Option 1')" routerLink="home">Home</h5>
+        <h5 class="option" [class.selected]="selectedOption === 'Option 2'" (click)="selectOption('Option 2')" routerLink="create-employee">Create Employee</h5>
+        <h5 class="option" [class.selected]="selectedOption === 'Option 3'" (click)="selectOption('Option 3')" routerLink="all-employee">All Employees List</h5>
+    
 
         <!-- This is ued to navigate back to login page using routerLink method -->
         <!-- <button routerLink="/login" class="logout">logout</button> -->

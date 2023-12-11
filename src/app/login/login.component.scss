@@ -8,11 +8,31 @@
 }
 
 form{
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
     padding: 20px;
     text-align: center;
 }
 button{
-    margin-top: 10px;
+    width: 80px;
+    height: 35px;
+    border: 0px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: lightcoral;
+    font-weight: 600;
+}
+button:hover{
+    border: 3px solid black;
+}
+label{
+    font-size: medium;
+    font-weight: 500;
+    width: 100px;
+}
+input{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: medium;
 }
