@@ -7,6 +7,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
+import { NotifyGuard } from './notify.guard';
 
 const routes: Routes = [
   // General routing
@@ -14,7 +15,7 @@ const routes: Routes = [
   // Child routing
   {path: 'dashboard', canActivate:[AuthenticationGuard], component: DashboardComponent, children:[
       {path: 'home',component: HomeComponent},
-      {path: 'create-employee', component: CreateEmployeeComponent},
+      {path: 'create-employee', canDeactivate:[NotifyGuard], component: CreateEmployeeComponent},
       {path: 'all-employee', component: AllEmployeesComponent}
   ]},
   // Empty routing
