@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PackagePipe } from './package.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HomeComponent,
     CreateEmployeeComponent,
     AllEmployeesComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    PackagePipe
   ],
   imports: [
     BrowserModule,

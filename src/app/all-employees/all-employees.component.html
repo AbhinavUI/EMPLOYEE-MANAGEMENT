@@ -69,7 +69,7 @@
             <td>{{employee.name}}</td>
             <td>{{employee.company}}</td>
             <td>{{employee.role}}</td>
-            <td [ngStyle]="{'background-color': employee.package>=9 ? '#5dbf5d' : '#e65858' }">{{employee.package}}</td>
+            <td [ngStyle]="{'background-color': employee.package>=9 ? '#5dbf5d' : '#e65858' }">{{employee.package | package}}</td>
             <td>{{employee.email}}</td>
             <td>{{employee.dob|date:'yyyy-MM-dd'}}</td>
             <td>{{employee.address?.addressLine}},<br>{{employee.address?.city}},<br>{{employee.address?.state}},<br>{{employee.address?.pincode}}</td>
