@@ -6,7 +6,7 @@
 
     <div class="search">
         <!--  For Search bar  -->
-        <input type="text" placeholder="search here...." (keypress)="getFilteredEmployees()" [(ngModel)]="term">
+        <input type="text" placeholder="search here...." (keyup)="getFilteredEmployees()" [(ngModel)]="term">
         <br><br>
     </div>
     
