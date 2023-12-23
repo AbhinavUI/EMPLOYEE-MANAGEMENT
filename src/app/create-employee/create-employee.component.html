@@ -1,7 +1,7 @@
 <!-- <p>create-employee works!</p> -->
 
 <div class="title">
-    <h3>Create Employee Form</h3>
+    <h3>{{id ? 'Edit Employee Form' : 'Create Employee Form'}}</h3>
     <br>
 </div>
     
@@ -108,6 +108,6 @@
             <br><br>
         </div>
 
-        <button (click)="submit()">submit</button>
+        <button (click)="submit()">{{id ? 'update' : 'create'}}</button>
     </form>
 </div>

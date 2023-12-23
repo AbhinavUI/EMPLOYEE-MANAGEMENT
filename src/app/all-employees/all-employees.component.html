@@ -46,7 +46,7 @@
 
 
 <table class="table table-striped">
-    <thead class="table table-dark">
+    <thead class="table table-dark thead">
         <tr>
             <th>S.no</th>
             <th>Name</th>
@@ -83,6 +83,8 @@
             <td>{{employee.travelFee}}</td>
             <td>{{employee.wifiBill}}</td>
             <td>
+                <button class="logout" (click)="edit(employee.id)">edit</button>
+                <button class="logout" (click)="view(employee.id)">view</button>
                 <button class="logout" (click)="delete(employee.id)">delete</button>
             </td>
         </tr>

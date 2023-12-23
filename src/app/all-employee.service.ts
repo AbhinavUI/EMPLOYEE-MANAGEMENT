@@ -36,4 +36,12 @@ export class AllEmployeeService {
   deleteEmployees(id:string):Observable<any>{
     return this._httpClient.delete(this.baseUrl+"/"+id);
   }
+
+  editEmployee(id:number, data:any):Observable<any>{
+    return this._httpClient.put(this.baseUrl+"/"+id,data);
+  }
+
+  getEmployee(id:number):Observable<any>{
+    return this._httpClient.get(this.baseUrl+"/"+id);
+  }
 }

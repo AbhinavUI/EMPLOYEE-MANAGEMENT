@@ -12,6 +12,7 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { PackagePipe } from './package.pipe';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PackagePipe } from './package.pipe';
     CreateEmployeeComponent,
     AllEmployeesComponent,
     PagenotfoundComponent,
-    PackagePipe
+    PackagePipe,
+    EmployeeViewComponent
   ],
   imports: [
     BrowserModule,

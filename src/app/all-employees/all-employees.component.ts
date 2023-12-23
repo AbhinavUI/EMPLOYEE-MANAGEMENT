@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AllEmployeeService } from '../all-employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-employees',
@@ -20,7 +21,8 @@ export class AllEmployeesComponent {
   // Pagination
   public pageno:number = 0;
   
-  constructor(private _allemployeesService: AllEmployeeService){
+  constructor(private _allemployeesService: AllEmployeeService, private _router: Router){
+
     _allemployeesService.getEmployees().subscribe(
       (data:any)=>{
         this.employees = data;
@@ -74,5 +76,13 @@ export class AllEmployeesComponent {
         alert('Internal server error');
       }
     )
+  }
+
+  view(id:number){
+    this._router.navigateByUrl("/dashboard/employee-view/"+id);
+  }
+
+  edit(id:number){
+    this._router.navigateByUrl("dashboard/edit-employee/"+id);
   }
 }

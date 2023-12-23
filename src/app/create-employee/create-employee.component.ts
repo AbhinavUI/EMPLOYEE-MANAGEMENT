@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AllEmployeeService } from '../all-employee.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -26,7 +27,9 @@ export class CreateEmployeeComponent {
     workMode: new FormControl(),
     travelFee: new FormControl(),
     WifiBill: new FormControl()
-  })
+  });
+
+  public id:any = "";
 
   get hikesFormArray(){
     return this.employeeForm.get('hikes') as FormArray;
@@ -45,18 +48,47 @@ export class CreateEmployeeComponent {
     this.hikesFormArray.removeAt(i);
   }
 
-  constructor(private _allemployeeService:AllEmployeeService){}
+  constructor(private _allemployeeService:AllEmployeeService, private _activatedRoute: ActivatedRoute){
+    _activatedRoute.params.subscribe(
+      (data:any)=>{
+        this.id = data.id;
+        if(this.id){
+          _allemployeeService.getEmployee(data.id).subscribe(
+            (data:any)=>{
+              this.employeeForm.patchValue(data);
+            },
+            (err:any)=>{
+              alert('Internal server error');
+            }
+          )
+        }
+      }
+    )
+  }
 
   submit(){
     console.log(this.employeeForm.value);
 
-    this._allemployeeService.createEmployees(this.employeeForm.value).subscribe(
-      (data:any)=>{
-        alert('Employee created successfully');
-      },
-      (err:any)=>{
-        alert('Internal server error');
-      }
-    )
+    if(this.id){
+      this._allemployeeService.editEmployee(this.id,this.employeeForm.value).subscribe(
+        (data:any)=>{
+          alert('Employee updated successfully');
+        },
+        (err:any)=>{
+          alert('Internal server error');
+        }
+      )
+    }
+    else{
+      this._allemployeeService.createEmployees(this.employeeForm.value).subscribe(
+        (data:any)=>{
+          alert('Employee created successfully');
+        },
+        (err:any)=>{
+          alert('Internal server error');
+        }
+      )
+    }
+    }
+    
   }
-}
