@@ -35,13 +35,16 @@ export class CreateEmployeeComponent {
     return this.employeeForm.get('hikes') as FormArray;
   }
 
+  
   add(){
-    this.hikesFormArray.push(
-      new FormGroup({
-        year: new FormControl(),
-        percentage: new FormControl()
-      })
-    )
+      this.hikesFormArray.push(
+        new FormGroup({
+          year: new FormControl(),
+          percentage: new FormControl()
+        })
+      )
+    
+    
   }
 
   delete(i:number){
@@ -56,6 +59,22 @@ export class CreateEmployeeComponent {
           _allemployeeService.getEmployee(data.id).subscribe(
             (data:any)=>{
               this.employeeForm.patchValue(data);
+              const hikesFormArray = this.employeeForm.get('hikes') as FormArray;
+
+      // Clear existing form array items
+      while (hikesFormArray.length) {
+        hikesFormArray.removeAt(0);
+      }
+
+      // Patch values for each item in the array
+      for (const hike of data.hikes) {
+        hikesFormArray.push(
+          new FormGroup({
+            year: new FormControl(hike.year),
+            percentage: new FormControl(hike.percentage),
+          })
+        );
+      }
             },
             (err:any)=>{
               alert('Internal server error');
